@@ -1,30 +1,39 @@
-let tabuleiro;
-let pino_amarelo;
-let pino_vermelho;
-let pino_verde;
+const singlePlay = document.querySelector("#singlePlay");
+const multiplay = document.querySelector("#multiplay");
+const multi = document.querySelector(".multi");
+const nomePlay1 = document.querySelector("#nomePlay1");
+const nomePlay2 = document.querySelector("#nomePlay2");
+const btn = document.querySelector("button");
+const player2 = document.querySelector(".player2");
 
+singlePlay.addEventListener("click", (event) => {
+  if (event.target.checked) {
+    multiplay.setAttribute("hidden", "hidden");
+    multi.setAttribute("hidden", "hidden");
+    player2.setAttribute("hidden", "hidden");
+    return;
+  }
+  multiplay.removeAttribute("hidden");
+  multi.removeAttribute("hidden");
+  player2.removeAttribute("hidden");
+});
 
+// multiplay.addEventListener('click', (event) => {
+//   if(event.target.checked){
+//     player2.removeAttribute('hidden')
+//     return
+//   }
+//   player2.setAttribute('hidden','hidden')
+// })
 
-let width = window.innerWidth;
-let height = window.innerHeight;
+btn.addEventListener("click", (event) => {
+  event.preventDefault();
 
-function preload() {
-  tabuleiro = loadImage("./assets/tabuleiro_cant_stop.png");
-  pino_amarelo = loadImage("./assets/pino_amarelo.png");
-  pino_vermelho = loadImage("./assets/pino_vermelho.png");
-  pino_verde = loadImage("./assets/pino_verde.png");
-}
+  const form = document.querySelector("form");
+  form.classList.add("fade");
 
-function setup() {
-  createCanvas(width, height);
-  som = createAudio('./assets/fogo.mp3');
-  som.autoplay(true);
-}
-
-function draw() {
-  background(100);
-  image(tabuleiro, 0, 0);
-  image(pino_amarelo, (width - width) + 50, (height - height) + 650);
-  image(pino_vermelho, (width - width) + 100, (height - height) + 650);
-  image(pino_verde, (width - width) + 150, (height - height) + 650);
-}
+  setInterval(() => {
+    // form.classList.remove('fade')
+    form.classList.add("show");
+  }, 1000);
+});

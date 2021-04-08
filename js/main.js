@@ -5,6 +5,8 @@ const nomePlay1 = document.querySelector("#nomePlay1");
 const nomePlay2 = document.querySelector("#nomePlay2");
 const btn = document.querySelector("button");
 const player2 = document.querySelector(".player2");
+const login = document.querySelector('.login')
+const canvas = document.querySelector('canvas')
 
 singlePlay.addEventListener("click", (event) => {
   if (event.target.checked) {
@@ -26,14 +28,17 @@ singlePlay.addEventListener("click", (event) => {
 //   player2.setAttribute('hidden','hidden')
 // })
 
+let usuarios = []
+
 btn.addEventListener("click", (event) => {
   event.preventDefault();
-
+  
   const form = document.querySelector("form");
   form.classList.add("fade");
-
+  window.localStorage.setItem("nomePlay1", nomePlay1.value)
+  
   setInterval(() => {
-    // form.classList.remove('fade')
-    form.classList.add("show");
+    login.setAttribute('hidden', 'hidden')
+    window.location.href = "canvas.html"
   }, 1000);
 });
